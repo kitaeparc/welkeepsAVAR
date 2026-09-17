@@ -5,169 +5,302 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>welkeepsAVAR</title>
     <style>
-        /* 기본 스타일 리셋 및 색상 정의 */
         :root {
-            --primary-color: #1a5bae; /* 로고 색상 계열 */
-            --text-color: #333;
-            --bg-light: #f8f9fa;
+            --primary-color: #0A2540;
+            --accent-color: #0070F3;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #F8F9FA;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Pretendard', -apple-system, sans-serif; color: var(--text-color); line-height: 1.6; }
 
-        /* 네비게이션 바 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
         header {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background: #fff; border-bottom: 1px solid #eee;
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1rem 5%; z-index: 1000;
-        }
-        .logo img { height: 35px; }
-        nav a { margin-left: 20px; text-decoration: none; color: #333; font-weight: 500; }
-        nav a:hover { color: var(--primary-color); }
-        .lang-select { margin-left: 20px; padding: 5px; border-radius: 4px; border: 1px solid #ccc; }
-
-        /* 섹션 공통 스타일 */
-        section { padding: 100px 5% 60px; min-height: 80vh; }
-        .section-title { font-size: 2rem; color: var(--primary-color); margin-bottom: 2rem; text-align: center; }
-
-        /* 메인 히어로 섹션 */
-        #home {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1200x600') center/cover;
-            color: #fff; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;
-        }
-        #home h1 { font-size: 2.8rem; margin-bottom: 1rem; }
-
-        /* 제품 소개 */
-        #products { background: var(--bg-light); }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .product-card { background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee; text-align: center; }
-        .product-card img { width: 100%; height: auto; border-radius: 4px; }
-
-        /* 문의 폼 및 오시는 길 */
-        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
-        form { display: flex; flex-direction: column; gap: 15px; }
-        input, textarea, button { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
-        button { background: var(--primary-color); color: #fff; border: none; cursor: pointer; }
-        .map-btn {
-            display: inline-block; padding: 12px 20px; background: #03C75A; color: white;
-            text-decoration: none; border-radius: 4px; font-weight: bold; text-align: center; margin-top: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
         }
 
-        /* 푸터 */
-        footer { background: #222; color: #888; text-align: center; padding: 20px; font-size: 0.9rem; }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        @media (max-width: 768px) {
-            .contact-container { grid-template-columns: 1fr; }
-            header { flex-direction: column; gap: 10px; }
+        .logo-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-group img {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .partner-link {
+            font-size: 11px;
+            color: var(--text-light);
+            text-decoration: none;
+            margin-top: 2px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .partner-link:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section with Drone/Tech Background */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 37, 64, 0.65), rgba(10, 37, 64, 0.75)), 
+                        url('https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 20px;
+            margin-top: 60px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Section Layout */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
+        /* Product Section */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background-color: var(--bg-light);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact & Map Section */
+        .contact-info-card {
+            background: var(--bg-light);
+            border-left: 4px solid var(--accent-color);
+            padding: 25px 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .info-item {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item strong {
+            color: var(--primary-color);
+            display: inline-block;
+            width: 90px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #E5E7EB;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header & Navigation -->
     <header>
-        <div class="logo" style="display: flex; flex-direction: column; align-items: flex-start;">
-    <a href="#"><img src="images/logo.png" alt="welkeepsAVAR" style="height: 35px;"></a>
-    <span style="font-size: 11px; color: #666; margin-top: 2px;">Strategic Partner of EAGLE BROTHER</span>
-</div>
-        <nav>
-            <a href="#home" data-i18n="nav_home">홈</a>
-            <a href="#about" data-i18n="nav_about">회사소개</a>
-            <a href="#products" data-i18n="nav_products">제품소개</a>
-            <a href="#contact" data-i18n="nav_contact">문의 및 오시는 길</a>
-            <select class="lang-select" onchange="changeLanguage(this.value)">
-                <option value="ko">한국어</option>
-                <option value="en">English</option>
-                <option value="zh">中文</option>
-            </select>
-        </nav>
+        <div class="nav-container">
+            <div class="logo-group">
+                <a href="#home">
+                    <img src="images/logo.png" alt="welkeepsAVAR" onerror="this.src='https://via.placeholder.com/160x40?text=welkeepsAVAR'">
+                </a>
+                <a href="https://www.ebuav.com/" target="_blank" rel="noopener noreferrer" class="partner-link">
+                    Strategic Partner of EAGLE BROTHER ↗
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#about">회사소개</a></li>
+                    <li><a href="#products">제품소개</a></li>
+                    <li><a href="#contact">문의 및 오시는 길</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section id="home">
-        <h1 data-i18n="hero_title">welkeepsAVAR</h1>
-        <p data-i18n="hero_sub">혁신적인 기술과 드론 솔루션을 제공합니다.</p>
-    </section>
-
-    <section id="about">
-        <h2 class="section-title" data-i18n="nav_about">회사소개</h2>
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <p data-i18n="about_text">welkeepsAVAR는 최고 수준의 인프라와 첨단 기술력을 바탕으로 시장을 선도해 나가고 있습니다.</p>
+    <!-- Hero Section -->
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h1>welkeepsAVAR</h1>
+            <p>혁신적인 기술과 최첨단 드론 솔루션을 제공합니다.</p>
         </div>
+    </div>
+
+    <!-- Company About Section -->
+    <section id="about">
+        <h2 class="section-title">회사소개</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-light); font-size: 1.1rem; line-height: 1.8;">
+            welkeepsAVAR는 미래 모빌리티와 자율주행 드론 분야의 혁신을 이끄는 전문 기업입니다. 글로벌 파트너십과 고성능 차세대 기술력을 바탕으로 고객의 니즈에 맞춘 최적의 솔루션을 제공합니다.
+        </p>
     </section>
 
+    <!-- Products Section -->
     <section id="products">
-        <h2 class="section-title" data-i18n="nav_products">제품소개</h2>
+        <h2 class="section-title">제품소개</h2>
         <div class="product-grid">
             <div class="product-card">
-                <!-- 업로드하신 드론 이미지 파일(image_2a053e.jpg)로 교체하세요 -->
-                <img src="images/S80.png" alt="S80 Drone Product">
-    <h3>S80</h3>>고성능 방제 및 관제 작업에 최적화된 드론 시스템입니다.</p>
+                <img src="images/S80.png" alt="S80 Drone" onerror="this.src='https://via.placeholder.com/400x240?text=S80+Drone'">
+                <div class="product-info">
+                    <h3>S80 스마트 드론</h3>
+                    <p>고성능 제어 시스템과 안정적인 비행 성능을 탑재한 다목적 드론 플랫폼입니다.</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Contact & Map Section -->
     <section id="contact">
-        <h2 class="section-title" data-i18n="nav_contact">문의 및 오시는 길</h2>
-        <div class="contact-container">
-            <!-- 문의하기 폼 -->
-            <div>
-                <h3 data-i18n="form_title" style="margin-bottom: 15px;">상담 문의</h3>
-                <form onsubmit="alert('문의가 접수되었습니다.'); return false;">
-                    <input type="text" placeholder="이름 / Name" required>
-                    <input type="email" placeholder="이메일 / Email" required>
-                    <textarea rows="5" placeholder="문의 내용 / Message" required></textarea>
-                    <button type="submit" data-i18n="form_btn">보내기</button>
-                </form>
+        <h2 class="section-title">문의 및 오시는 길</h2>
+        
+        <!-- 주소 및 전화번호 표시 카드를 지도 위에 설치 -->
+        <div class="contact-info-card">
+            <div class="info-item">
+                <strong>주소</strong> 인천광역시 미추홀구 염전로 336 베르너웍스 4층
             </div>
-            <!-- 위치 정보 -->
-            <div>
-                <h3 data-i18n="map_title" style="margin-bottom: 15px;">오시는 길</h3>
-                <p data-i18n="map_desc">아래 버튼을 클릭하시면 네이버 지도에서 위치를 확인하실 수 있습니다.</p>
-                <a href="https://naver.me/5WUfzk8g" target="_blank" class="map-btn" data-i18n="map_btn">네이버 지도로 보기</a>
+            <div class="info-item">
+                <strong>전화번호</strong> 032-578-9456
             </div>
+        </div>
+
+        <!-- 지도 (구글 지도 연동) -->
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.234!2d126.6715!3d37.4725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDI4JzIxLjAiTiAxMjYnwDQwJzE3LjQiRQ!5e0!3m2!1sko!2skr!4v1600000000000!5m2!1sko!2skr" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2026 welkeepsAVAR. All rights reserved.</p>
+        <p>&copy; welkeepsAVAR. All rights reserved.</p>
     </footer>
 
-    <!-- 다국어 제어 스크립트 -->
-    <script>
-        const translations = {
-            ko: {
-                nav_home: "홈", nav_about: "회사소개", nav_products: "제품소개", nav_contact: "문의 및 오시는 길",
-                hero_title: "welkeepsAVAR", hero_sub: "혁신적인 기술과 드론 솔루션을 제공합니다.",
-                about_text: "welkeepsAVAR는 최고 수준의 기술력을 바탕으로 시장을 선도해 나가고 있습니다.",
-                prod1_title: "산업용 드론", prod1_desc: "고성능 작업에 최적화된 드론 시스템입니다.",
-                form_title: "상담 문의", form_btn: "보내기",
-                map_title: "오시는 길", map_desc: "네이버 지도에서 정확한 위치를 확인해보세요.", map_btn: "네이버 지도로 보기"
-            },
-            en: {
-                nav_home: "Home", nav_about: "About Us", nav_products: "Products", nav_contact: "Contact & Location",
-                hero_title: "welkeepsAVAR", hero_sub: "Providing innovative technology and drone solutions.",
-                about_text: "welkeepsAVAR leads the market based on top-tier technical expertise.",
-                prod1_title: "Industrial Drone", prod1_desc: "Drone system optimized for high-performance operations.",
-                form_title: "Contact Us", form_btn: "Send",
-                map_title: "Location", map_desc: "Click the button below to check our location on Naver Map.", map_btn: "View on Naver Map"
-            },
-            zh: {
-                nav_home: "首页", nav_about: "公司介绍", nav_products: "产品介绍", nav_contact: "联系 & 位置",
-                hero_title: "welkeepsAVAR", hero_sub: "提供创新技术与无人机解决方案。",
-                about_text: "welkeepsAVAR 凭借卓越的技术实力引领市场。",
-                prod1_title: "工业无人机", prod1_desc: "专为高性能作业优化的无人机系统。",
-                form_title: "在线咨询", form_btn: "提交",
-                map_title: "来访路线", map_desc: "点击下方按钮查看Naver地图位置。", map_btn: "查看 Naver 地图"
-            }
-        };
-
-        function changeLanguage(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
-        }
-    </script>
 </body>
 </html>
